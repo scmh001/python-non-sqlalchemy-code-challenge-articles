@@ -1,4 +1,5 @@
 from collections import Counter
+from collections import OrderedDict
 
 # Defines an Author class to represent an author with a name and a list of articles they've written.
 class Author:
@@ -21,7 +22,7 @@ class Author:
 
     # Returns a list of unique magazines where the author has published articles.
     def magazines(self):
-        return list({article.magazine for article in self._articles})
+        return list(OrderedDict.fromkeys(article.magazine for article in self._articles))
 
     # Adds an article to the author's list of articles if it doesn't already exist.
     def add_article(self, magazine, title):
